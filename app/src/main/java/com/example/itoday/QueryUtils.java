@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class QueryUtils {
 
 
-    public ArrayList<Details> fetchData(String BASE_URL){
+    public static ArrayList<Details> fetchData(String BASE_URL){
 
         URL url = createUrl(BASE_URL);
         String JsonResponse = makeHttpConnection(url);
@@ -26,7 +26,7 @@ public class QueryUtils {
 
 
 
-    private URL createUrl(String base_url) {
+    private static URL createUrl(String base_url) {
 
         URL url = null;
 
@@ -38,7 +38,7 @@ public class QueryUtils {
         return url;
     }
 
-    private String makeHttpConnection(URL url) {
+    private static String makeHttpConnection(URL url) {
 
         String jsonResponse = "";
         HttpURLConnection urlConnection = null;
@@ -61,7 +61,7 @@ public class QueryUtils {
 
 
 
-    private String readFromStream(InputStream inputStream) throws IOException {
+    private static String readFromStream(InputStream inputStream) throws IOException {
 
         StringBuilder output = new StringBuilder();
         if(inputStream != null){
@@ -77,7 +77,7 @@ public class QueryUtils {
         return output.toString();
     }
 
-    private ArrayList<Details> readFromJson(String jsonResponse) {
+    private static ArrayList<Details> readFromJson(String jsonResponse) {
 
         ArrayList<Details> details = new ArrayList<>();
 

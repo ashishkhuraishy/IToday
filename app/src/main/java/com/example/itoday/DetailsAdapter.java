@@ -5,6 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.TextView;
+
 import java.util.ArrayList;
 
 
@@ -16,14 +18,20 @@ public class DetailsAdapter extends ArrayAdapter<Details> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        View listView = convertView;
-        if(listView == null){
-            listView = LayoutInflater.from(getContext()).inflate(R.layout.activity_main, parent, false);
+        View listItemView = convertView;
+        if(listItemView == null){
+            listItemView = LayoutInflater.from(getContext()).inflate(R.layout.activity_list_item, parent, false);
         }
 
         Details currentPosition = getItem(position);
 
-        return listView;
+        TextView titleTextView = listItemView.findViewById(R.id.titleText);
+        titleTextView.setText(currentPosition.getmTitle());
+
+        TextView authorTextView = listItemView.findViewById(R.id.authorText);
+        authorTextView.setText(currentPosition.getmAuthor());
+
+        return listItemView;
 
     }
 }
