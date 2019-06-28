@@ -1,5 +1,6 @@
 package com.example.itoday;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -82,13 +83,29 @@ public class QueryUtils {
 
         try {
             JSONObject jsonObject = new JSONObject(jsonResponse);
+            JSONArray articles = jsonObject.getJSONArray("articles");
+
+            for (int i=0; i<=articles.length(); i++){
+                JSONObject currentPosition = articles.getJSONObject(i);
+                String author = currentPosition.getString("author");
+                String title = currentPosition.getString("title");
+                String description = currentPosition.getString("description");
+                String webUrl = currentPosition.getString("url");
+                String imageUrl = currentPosition.getString("urlToImage");
+                String publishedAt = currentPosition.getString("publishedAt");
+                String content = currentPosition.getString("content");
+
+                details.add(new Details(author, title, description, webUrl, imageUrl, publishedAt,content));
+            }
+
+            return details;
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
+        return details;
 
     }
-
 
 }
