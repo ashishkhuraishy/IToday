@@ -31,6 +31,9 @@ public class MainActivity extends AppCompatActivity {
 
         listView.setAdapter(mAdapter);
 
+        DetailsLoader task = new DetailsLoader();
+        task.execute();
+
     }
 
 
